@@ -9,8 +9,4 @@ workflows:
     jobs:
       # first get the source code and install npm dependencies
       - cypress/install
-      - cypress/run:
-          executor: cypress/browsers-chrome69
-          browser: chrome
-          requires:
-            - cypress/install
+      - cypress/run
