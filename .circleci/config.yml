@@ -9,4 +9,5 @@ workflows:
     jobs:
       # first get the source code and install npm dependencies
       - cypress/install
-      - cypress/run
+      - cypress/run:
+          record: true
