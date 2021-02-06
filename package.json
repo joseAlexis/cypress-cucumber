@@ -4,7 +4,8 @@
   "description": "Test",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cypress-test": "npx cypress run --spec cypress/integration/HomePage.feature --record --key 96a252a0-3302-48d9-beb9-e848cffe3985",
+    "cypress-test-chrome": "npm run cypress-test -- --browser chrome --headless"
   },
   "author": "jbolanos",
   "license": "ISC",

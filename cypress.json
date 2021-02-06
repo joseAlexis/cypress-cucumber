@@ -1,5 +1,6 @@
 {
-    "baseUrl": "http://automationpractice.com/",
-    "testFiles": "**/*.feature",
-    "watchForFileChanges": false
+  "baseUrl": "http://automationpractice.com/",
+  "testFiles": "**/*.feature",
+  "watchForFileChanges": false,
+  "projectId": "axhrgu"
 }
