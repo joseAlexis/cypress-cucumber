@@ -1,4 +1,4 @@
-#Cypress Cucumber
+# Cypress Cucumber
 
 This project is an example of how to integrate Cypress with Cucumber using the [cypress-cucumber-preprocessor](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor).
 
