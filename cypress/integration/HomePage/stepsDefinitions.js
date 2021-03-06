@@ -1,8 +1,4 @@
-import { And, Given, Then, When } from "cypress-cucumber-preprocessor/steps"
-
-Given('An ecommerce page', () => {
-    cy.visit('index.php');
-});
+import { And, Then, When } from "cypress-cucumber-preprocessor/steps"
 
 When('Try to add a element to the cart', () => {
     cy.get('div.product-container:nth-child(1)').invoke('hover');

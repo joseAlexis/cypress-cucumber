@@ -9,9 +9,9 @@ Feature: Home Page
 
 
     Scenario: Serach for an item
-    Given An ecommerce page
-    When Serach for an item
-    |name   |
-    |Faded  |
-    And click over the results
-    Then Item details are displayed
+        Given An ecommerce page
+        When Serach for an item
+            | name  |
+            | Faded |
+        And click over the results
+        Then Item details are displayed
