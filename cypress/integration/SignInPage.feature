@@ -5,4 +5,4 @@ Feature: Sign In Page
         Given An ecommerce page
         When Creating an Account
         And Completing the form
-        # Then An access account is created
+        Then An access account is created
