@@ -10,8 +10,10 @@
   "author": "jbolanos",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^6.2.1",
-    "cypress-cucumber-preprocessor": "^4.0.0"
+    "@types/faker": "^5.1.7",
+    "cypress": "^7.2.0",
+    "cypress-cucumber-preprocessor": "^4.0.0",
+    "faker": "^5.4.0"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
