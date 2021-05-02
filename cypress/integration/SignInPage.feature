@@ -6,5 +6,3 @@ Feature: Sign In Page
         When Creating an Account
         And Completing the form
         Then An access account is created
-        # Getting error: The Test Runner unexpectedly exited via a exit event with signal SIGSEGV
-        ## https://github.com/cypress-io/cypress/issues/9208
