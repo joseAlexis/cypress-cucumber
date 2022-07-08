@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": [
+            "es5",
+            "dom"
+        ],
+        "types": [
+            "cypress",
+            "cypress-localstorage-commands"
+        ]
+    },
+    "include": [
+        "**/*.ts",
+        "plugins/index.js",
+        "plugins/user-faker.js"
+    ]
+}

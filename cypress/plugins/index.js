@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
 //
@@ -16,13 +15,22 @@
  * @type {Cypress.PluginConfig}
  */
 
-const cucumber = require('cypress-cucumber-preprocessor').default
+const cucumber = require("cypress-cucumber-preprocessor").default;
+const browserify = require("@cypress/browserify-preprocessor");
+const resolve = require('resolve');
+
 const userFaker = require('./user-faker');
 
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-  on('file:preprocessor', cucumber())
+
+  const options = {
+    ...browserify.defaultOptions,
+    typescript: resolve.sync('typescript', { baseDir: config.projectRoot })
+  }
+
+  on('file:preprocessor', cucumber(options))
 
   on('task', userFaker)
 }
