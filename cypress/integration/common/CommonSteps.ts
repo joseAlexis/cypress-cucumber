@@ -1,5 +1,5 @@
 import { Given } from "cypress-cucumber-preprocessor/steps";
 
-Given('An ecommerce page', () => {
+Given('I navigate to the shopping page', () => {
     cy.visit('index.php');
 });
