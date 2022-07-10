@@ -6,18 +6,17 @@ before(function() {
     });
 });
 
-When('Creating an Account', function () {
+When('I create a new user account', function () {
     cy.get('a.login').click();
     cy.getLocalStorage("userInfo").then(userInfo => {
         const user = JSON.parse(userInfo);
+        
+        // Email validation
         cy.get('input#email_create').type(user.email);
-    })
-    cy.get('button#SubmitCreate').click();
-});
+        cy.get('button#SubmitCreate').click();
+        cy.get('form#account-creation_form').should('be.visible');
 
-And('Completing the form', function () {
-    cy.getLocalStorage("userInfo").then(userInfo => {
-        const user = JSON.parse(userInfo);
+        // Personal Information form
         user.gender === 'Mr.' ? cy.get('div#uniform-id_gender1').click() : cy.get('div#uniform-id_gender2').click();
         cy.get('input#customer_firstname').type(user.firstName);
         cy.get('input#customer_lastname').type(user.lastName);
@@ -43,10 +42,11 @@ And('Completing the form', function () {
         cy.get('select#id_state').select(user.state);
         cy.get('input#postcode').type(user.zipCode);
         cy.get('input#phone_mobile').type(user.mobilePhone);
-    })
+    });
     cy.get('button#submitAccount').click();
 });
 
-Then('An access account is created', function () {
-    cy.url().should('equal', `${Cypress.config().baseUrl}index.php?controller=my-account`)
+Then('My Account details are displayed', function () {
+    cy.url().should('equal', `${Cypress.config().baseUrl}index.php?controller=my-account`);
+    cy.get('h1.page-heading').should('be.visible').and('have.text', 'My account');
 });
