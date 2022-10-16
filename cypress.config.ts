@@ -2,27 +2,25 @@ import { defineConfig } from 'cypress';
 import { faker } from '@faker-js/faker';
 
 // Cypress Cucumber PreProcessor dependencies
-const cucumber = require("cypress-cucumber-preprocessor").default;
-const browserify = require("@cypress/browserify-preprocessor");
-const resolve = require('resolve');
+import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
+import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
+import createEsbuildPlugin from "@badeball/cypress-cucumber-preprocessor/esbuild";
 
 export default defineConfig({
+    watchForFileChanges: false,
+    projectId: "axhrgu",
+    chromeWebSecurity: false,
     e2e: {
         baseUrl: "http://automationpractice.com/",
         specPattern: "**/*.feature",
-        watchForFileChanges: false,
-        projectId: "axhrgu",
-        chromeWebSecurity: false,
-        setupNodeEvents(on, config) {
 
-            // Cypress Cucumber Preprocessor options
-            const options = {
-                ...browserify.defaultOptions,
-                typescript: resolve.sync('typescript', { baseDir: config.projectRoot })
-            }
-            
+        async setupNodeEvents(on, config) {
+            await addCucumberPreprocessorPlugin(on, config)
+
             // bind to the event we care about
-            on('file:preprocessor', cucumber(options))
+            on('file:preprocessor', createBundler({
+                plugins: [createEsbuildPlugin(config)],
+            })),
             on('task', {
                 "userInfo"() {
                     return {
@@ -45,6 +43,7 @@ export default defineConfig({
                     }
                 }
             });
+            return config;
         }
     }
 })
